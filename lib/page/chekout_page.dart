@@ -232,6 +232,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
         child: Column(
           children: [
             SizedBox(height: 12),
+            pricing(),
+            SizedBox(height: 12),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Container(
@@ -290,25 +292,38 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(24),
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                cartItem(),
-              ],
-            ),
-            Positioned(
-              bottom: 0, // Menempatkan total di bagian bawah
-              left: 0, // Atur posisi horizontal ke kiri
-              right: 0, // Atur posisi horizontal ke kanan
-              child: Column(
-                children: [pricing(), payBtn()],
-              ),
-            ),
-          ],
-        ),
-      ),
+          padding: EdgeInsets.all(24),
+          child: ListView(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  cartItem(),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                  payBtn(),
+                ],
+              )
+            ],
+          )
+
+          // Stack(
+          //   children: [
+          //     Column(
+          //       children: [
+          //         cartItem(),
+          //       ],
+          //     ),
+          //     Positioned(
+          //       bottom: 0, // Menempatkan total di bagian bawah
+          //       left: 0, // Atur posisi horizontal ke kiri
+          //       right: 0, // Atur posisi horizontal ke kanan
+          //       child: Column(
+          //         children: [pricing(), payBtn()],
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          ),
     );
   }
 }
